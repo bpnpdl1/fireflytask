@@ -4,15 +4,16 @@ namespace App\Enums;
 
 enum TransactionTypeEnum: string
 {
-    case INCOME = 'income';
-    case EXPENSE = 'expense';
+    case INCOME = 'Income';
+    case EXPENSE = 'Expense';
 
-    public function label(): string
+    public function getBgColor(): string
     {
         return match ($this) {
-            self::INCOME => 'Income',
-            self::EXPENSE => 'Expense',
+            self::INCOME => 'bg-green-500',
+            self::EXPENSE => 'bg-red-500',
         };
     }
+  
 
 }

@@ -29,8 +29,14 @@
 
             <!-- Page Content -->
             <main>
+                @if(Session::has('success'))
+                    <div class="bg-green-100 border-l-4 mt-4 border-green-500 text-green-700 p-4 container mx-auto" role="alert">
+                        <p>{{ Session::get('success') }}</p>
+                    </div>
+                @endif
                 {{ $slot }}
             </main>
         </div>
     </body>
+    @stack('scripts')
 </html>
