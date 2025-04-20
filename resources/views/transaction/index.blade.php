@@ -7,7 +7,8 @@
     </x-slot>
 
     <div class="py-6">
-        <span class="hidden bg-green-500 bg-red-500"></span>
+        <span class="hidden bg-green-500"></span>
+        <span class="hidden bg-red-500"></span>
         <div class="max-w-7xl flex flex-col mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-between items-center mb-4">
                 <div>
@@ -19,47 +20,52 @@
             </div>
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-200">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SN</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach($transactions as $transaction)
+                <div class="overflow-x-auto w-full">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-200">
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $transaction->description }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $transaction->amount }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                    @php
-                                        $typeEnum = TransactionTypeEnum::from($transaction->type);
-                                    @endphp
-                                    <span class="{{$typeEnum->getBgColor()}} text-white px-2 py-1 rounded text-xs font-semibold mr-2">
-                                        {{ $transaction->type }} 
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $transaction->transaction_date }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <x-primary-button 
-                                        onclick="window.location.href='{{ route('transaction.edit', $transaction) }}'" 
-                                        class="text-blue-600 hover:text-blue-900">
-                                        {{ __('Edit') }}
-                                    </x-primary-button>
-                                    
-                                    <x-danger-button onclick="deleteTransaction({{ $transaction->id }})">
-                                        {{ __('Delete') }}
-                                    </x-danger-button>
-                                </td>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SN</th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach($transactions as $transaction)
+                                <tr class="text-sm">
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $loop->iteration }}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $transaction->description }}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $transaction->amount }}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">
+                                        @php
+                                            $typeEnum = TransactionTypeEnum::from($transaction->type);
+                                        @endphp
+                                        <span class="{{ $typeEnum->getBgColor() }} text-white px-2 py-1 rounded text-xs font-semibold">
+                                            {{ $transaction->type }} 
+                                        </span>
+                                    </td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $transaction->transaction_date }}</td>
+                                    <td class="px-4 py-2  whitespace-nowrap text-sm font-medium flex flex-col gap-2 sm:flex-row">
+                                        <x-primary-button 
+                                            onclick="window.location.href='{{ route('transaction.edit', $transaction) }}'" 
+                                            class="text-blue-600 hover:text-blue-900 w-full sm:w-auto">
+                                            {{ __('Edit') }}
+                                        </x-primary-button>
+                
+                                        <x-danger-button 
+                                            onclick="deleteTransaction({{ $transaction->id }})" 
+                                            class="w-full sm:w-auto">
+                                            {{ __('Delete') }}
+                                        </x-danger-button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -70,7 +76,7 @@
             @method('delete')
 
             <h2 class="text-lg font-medium text-gray-900">
-                {{ __('Are you sure you want to delete this transaction?') }}
+                {{ __('Are you sure want to delete this transaction?') }}
             </h2>
         
             <div class="mt-6 flex justify-end">
