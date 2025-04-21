@@ -95,17 +95,20 @@ A Laravel-based personal finance tracking application that helps users manage th
 
 ### Dashboard View
 
-![Dashboard Screenshot](path/to/dashboard-screenshot.png)
+![image](https://github.com/user-attachments/assets/3d402045-cbe0-4450-9a4e-f7d5943187a0)
+
 _The main dashboard provides an overview of financial status with recent transactions_
 
 ### Transaction List
 
-![Transaction List Screenshot](path/to/transaction-list-screenshot.png)
+![image](https://github.com/user-attachments/assets/6a15de99-8237-47a9-8d46-041747cb6d77)
+
 _List of all transactions with filtering capability_
 
 ### Add Transaction Form
 
-![Add Transaction Screenshot](path/to/add-transaction-screenshot.png)
+![image](https://github.com/user-attachments/assets/c225c823-6779-47e9-8048-7ad58b8a5f41)
+
 _Form for adding new income or expense transactions_
 
 ## Database Structure
@@ -147,29 +150,12 @@ This project is configured to work with Laravel Herd, which provides an optimize
 
 Run the test suite with:
 
-```bash
-php artisan test
-```
+-Transaction Test
+![image](https://github.com/user-attachments/assets/01c3f8b6-f500-48d1-919c-d6335aa170bc)
 
-The application includes both feature and unit tests covering transaction functionality.
+-TransactionControllerTest
+![image](https://github.com/user-attachments/assets/16585d33-0832-4264-b365-21e283a89001)
 
-### Test Results
-
-![Test Results Screenshot](path/to/test-results-screenshot.png)
-_All tests passing successfully_
-
-#### Feature Tests
-
--   ✓ Transaction index page loads correctly
--   ✓ User can create new transaction
--   ✓ User can update existing transaction
--   ✓ User can delete transaction
--   ✓ User can filter transactions by type
-
-#### Unit Tests
-
--   ✓ Transaction model returns correct attributes
--   ✓ TransactionTypeEnum returns correct background color
 
 ## Customization
 
