@@ -34,7 +34,7 @@ A Laravel-based personal finance tracking application that helps users manage th
 1. Clone the repository:
 
     ```bash
-    git clone [repository-url]
+    git clone https://github.com/bpnpdl1/fireflytask
     cd fireflytask
     ```
 
