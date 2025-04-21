@@ -14,9 +14,23 @@
                 <div>
                     <p class="font-bold text-lg">Transaction Lists</p>
                 </div>
-                <x-primary-button class="mb-4" onclick="window.location='{{ route('transaction.create') }}'">
-                    {{ __('Add Transaction') }}
-                </x-primary-button>
+               
+                <div class="flex gap-2 items-center">
+                    <div>
+                        <form action="{{ route('transaction.index') }}" method="GET" class="flex items-center gap-2">
+                            <select name="type" id="type" class="border border-gray-300 w-32 rounded-md p-2">
+                                <option value="">All</option>
+                                @foreach (TransactionTypeEnum::cases() as $type)
+                                    <option value="{{ $type->value }}" {{ request('type') == $type->value ? 'selected' : '' }}>{{ $type->value }}</option>
+                                @endforeach
+                            </select>
+                            <x-primary-button type="submit">{{ __('Filter') }}</x-primary-button>
+                        </form>
+                    </div>
+                    <x-primary-button  onclick="window.location='{{ route('transaction.create') }}'">
+                        {{ __('Add Transaction') }}
+                    </x-primary-button>
+                </div>
             </div>
             
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

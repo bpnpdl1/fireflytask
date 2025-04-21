@@ -15,7 +15,14 @@ class TransactionController extends Controller
     public function index()
     {
 
-        $transactions = Transaction::where('user_id', auth()->id())->get();
+        $type= request('type');
+
+        
+
+        $transactions = Transaction::where('user_id', auth()->id())
+                         ->when($type, function($query) use ($type) {
+                            return $query->where('type', $type);
+                        })->get();
         
         return view('transaction.index',[
             'transactions' => $transactions,
@@ -57,14 +64,6 @@ class TransactionController extends Controller
 
         return redirect()->route('transaction.index')->with('success', 'Transaction created successfully.');
 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
