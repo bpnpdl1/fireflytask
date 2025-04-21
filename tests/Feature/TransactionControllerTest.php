@@ -36,6 +36,9 @@ class TransactionControllerTest extends TestCase
         ]);
     }
 
+    /**
+     * Test for update method in TransactionController.
+     */
     public function test_update_transaction(): void
     {
         $user = User::factory()->create();
@@ -66,23 +69,22 @@ class TransactionControllerTest extends TestCase
         ]);
     }
 
+    /**
+     * Test for delete method in TransactionController.
+     */
     public function test_delete_transaction(): void
     {
-        // Create a user and transaction owned by that user
+
         $user = User::factory()->create();
         $transaction = Transaction::factory()->create(['user_id' => $user->id]);
 
-        // Ensure transaction exists in database before deletion
         $this->assertDatabaseHas('transactions', ['id' => $transaction->id]);
 
-        // Send delete request while authenticated as the user
         $response = $this->actingAs($user)->delete(route('transaction.destroy', $transaction->id));
 
-        // Assert proper redirect after successful deletion
         $response->assertRedirect(route('transaction.index'));
         $response->assertSessionHas('success', 'Transaction deleted successfully.');
 
-        // Assert transaction is removed from the database
         $this->assertDatabaseMissing('transactions', [
             'id' => $transaction->id,
         ]);
