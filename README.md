@@ -1,61 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Firefly Task - Personal Finance Tracker
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based personal finance tracking application that helps users manage their income and expenses with a clean, user-friendly interface.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   **Transaction Management**: Create, view, edit, and delete financial transactions
+-   **Transaction Categories**: Categorize transactions as either Income or Expense
+-   **User Authentication**: Secure user accounts with Laravel's authentication system
+-   **Dashboard**: Visual overview of financial status
+-   **Filtering**: Filter transactions by type (Income/Expense)
+-   **Data Validation**: Comprehensive validation for all transaction data
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technical Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Framework**: Laravel
+-   **Frontend**: Blade templates with Tailwind CSS
+-   **Database**: MySQL
+-   **Authentication**: Laravel Breeze
+-   **CSS Framework**: Tailwind CSS
+-   **Build Tool**: Vite
+-   **Local Development Environment**: Laravel Herd
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Laravel Herd (recommended for Windows development)
+-   PHP 8.1 or higher
+-   Composer
+-   Node.js & NPM
+-   MySQL database
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone the repository:
 
-## Laravel Sponsors
+    ```bash
+    git clone [repository-url]
+    cd fireflytask
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Install PHP dependencies:
 
-### Premium Partners
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+3. Install NPM dependencies:
 
-## Contributing
+    ```bash
+    npm install
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Create a copy of the `.env.example` file:
 
-## Code of Conduct
+    ```bash
+    cp .env.example .env
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. Generate an application key:
 
-## Security Vulnerabilities
+    ```bash
+    php artisan key:generate
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. Configure your database in the `.env` file:
+
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=fireflytask
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+7. Run the database migrations and seeders:
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+8. Compile assets:
+
+    ```bash
+    npm run dev
+    ```
+
+9. Using Laravel Herd:
+    - Open Laravel Herd
+    - Add your project to Herd
+    - Click on "Start Site" in the Herd interface
+    - Click on "View Site" to open your project in the browser
+
+## Database Structure
+
+The application uses the following main tables:
+
+-   **users**: Stores user account information
+-   **transactions**: Stores all financial transactions with the following fields:
+    -   `id`: Unique identifier
+    -   `description`: Transaction description
+    -   `amount`: Transaction amount
+    -   `type`: Transaction type (Income/Expense)
+    -   `transaction_date`: Date when the transaction occurred
+    -   `user_id`: Reference to the user who owns the transaction
+    -   `created_at` and `updated_at`: Timestamps
+
+## Usage
+
+1. Register a new account or login with existing credentials
+2. Use the dashboard to view your financial overview
+3. Add new transactions through the "Create Transaction" form
+4. View all transactions on the transaction index page
+5. Filter transactions by type (Income/Expense)
+6. Edit or delete transactions as needed
+
+## Development
+
+### Laravel Herd
+
+This project is configured to work with Laravel Herd, which provides an optimized development environment for Laravel on Windows. Laravel Herd includes:
+
+-   PHP with optimized configuration
+-   MySQL database
+-   Automatic virtual host configuration
+-   Easy SSL certificate management
+-   Simple project management UI
+
+### Testing
+
+Run the test suite with:
+
+```bash
+php artisan test
+```
+
+The application includes both feature and unit tests covering transaction functionality.
+
+### Customization
+
+-   Transaction types are managed through the `TransactionTypeEnum` enum
+-   Styling uses Tailwind CSS classes with specific background colors for different transaction types
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
