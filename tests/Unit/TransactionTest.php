@@ -10,8 +10,8 @@ use Tests\TestCase;
 
 class TransactionTest extends TestCase
 {
-
     use RefreshDatabase;
+
     /**
      * A basic unit test for creating transactions.
      */
@@ -20,7 +20,6 @@ class TransactionTest extends TestCase
 
         $user = User::factory()->create();
 
-
         Transaction::create([
             'description' => 'Test',
             'amount' => 100,
@@ -28,8 +27,6 @@ class TransactionTest extends TestCase
             'transaction_date' => now(),
             'user_id' => $user->id,
         ]);
-
-
 
         $this->assertDatabaseHas('transactions', [
             'description' => 'Test',

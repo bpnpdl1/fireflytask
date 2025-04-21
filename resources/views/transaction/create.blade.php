@@ -23,19 +23,19 @@
                     @csrf
             
                     <div>
-                        <x-input-label for="amount" :value="__('Amount')" />
+                        <x-input-label for="amount" :value="__('Amount')" :required="true" />
                         <x-text-input id="amount" name="amount" type="number" class="mt-1 block w-full" :value="old('amount')" required autofocus autocomplete="amount" />
                         <x-input-error class="mt-2" :messages="$errors->get('amount')" />
                     </div>
             
                     <div>
-                        <x-input-label for="description" :value="__('Description')" />
+                        <x-input-label for="description" :value="__('Description')" :required="true" />
                         <x-text-input id="description" name="description" type="text" class="mt-1 block w-full" :value="old('description')" required autocomplete="description" />
                         <x-input-error class="mt-2" :messages="$errors->get('description')" />
                     </div>
 
                     <div>
-                        <p class="text-sm font-medium text-gray-700 mb-2">Select Transaction Type:</p>
+                        <p class="text-sm font-medium text-gray-700 mb-2">Select Transaction Type <x-required />:</p>
                         
                         <div class="flex flex-wrap items-center gap-6">
                             @foreach(TransactionTypeEnum::cases() as $type)
@@ -57,7 +57,7 @@
                     
 
                     <div>
-                        <x-input-label for="transaction_date" :value="__('Transaction Date')" />
+                        <x-input-label for="transaction_date" :value="__('Transaction Date')" :required="true" />
                         <x-text-input id="transaction_date" name="transaction_date" type="date" class="mt-1 block w-full" :value="old('transaction_date',date('Y-m-d'))" required autocomplete="description" />
                         <x-input-error class="mt-2" :messages="$errors->get('transaction_date')" />
                     </div>

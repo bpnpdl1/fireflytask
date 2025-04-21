@@ -14,6 +14,4 @@ enum TransactionTypeEnum: string
             self::EXPENSE => 'bg-red-500',
         };
     }
-  
-
 }

@@ -15,16 +15,14 @@ class TransactionController extends Controller
     public function index()
     {
 
-        $type= request('type');
-
-        
+        $type = request('type');
 
         $transactions = Transaction::where('user_id', auth()->id())
-                         ->when($type, function($query) use ($type) {
-                            return $query->where('type', $type);
-                        })->paginate(15);
-        
-        return view('transaction.index',[
+            ->when($type, function ($query) use ($type) {
+                return $query->where('type', $type);
+            })->paginate(15);
+
+        return view('transaction.index', [
             'transactions' => $transactions,
         ]);
     }
@@ -34,8 +32,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        $user= auth()->user();
-        return view('transaction.create',[
+        $user = auth()->user();
+
+        return view('transaction.create', [
             'user' => $user,
         ]);
     }
@@ -59,7 +58,7 @@ class TransactionController extends Controller
             'transaction_date' => $request->transaction_date,
             'user_id' => auth()->id(),
         ]);
-    
+
         session()->flash('success', 'Transaction created successfully.');
 
         return redirect()->route('transaction.index')->with('success', 'Transaction created successfully.');
@@ -72,6 +71,7 @@ class TransactionController extends Controller
     public function edit(string $id)
     {
         $transaction = Transaction::findOrFail($id);
+
         return view('transaction.edit', [
             'transaction' => $transaction,
         ]);
