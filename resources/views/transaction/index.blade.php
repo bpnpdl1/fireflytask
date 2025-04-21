@@ -51,7 +51,7 @@
                                 <tr class="text-sm">
                                     <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $loop->iteration }}</td>
                                     <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $transaction->description }}</td>
-                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">{{ $transaction->amount }}</td>
+                                    <td class="px-4 py-2 whitespace-nowrap text-gray-900">@money($transaction->amount)</td>
                                     <td class="px-4 py-2 whitespace-nowrap text-gray-900">
                                         @php
                                             $typeEnum = TransactionTypeEnum::from($transaction->type);
