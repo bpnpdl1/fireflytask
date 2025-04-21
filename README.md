@@ -70,6 +70,14 @@ php artisan key:generate
 Update your `.env` file with your database credentials:
 
 ```
+APP_NAME=FireFlyTask
+APP_ENV=local
+APP_KEY=base64:oM8Mxe1MTm6Ys50sPnkbiHpuQi2Ig4Nhy7GiWAMBn0A=
+APP_DEBUG=true
+APP_URL=https://fireflytask.test
+```
+
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -97,12 +105,16 @@ npm run dev
 
 ## Usage Guide
 
-1. Register a new account or login with existing credentials
+1. Register a new account or log in with existing credentials  
+   - **Login credentials:**  
+     **Email:** `admin@gmail.com`  
+     **Password:** `password`
 2. Navigate to the dashboard to see your financial overview
-3. Add new transactions through the "Create Transaction" form
-4. View and manage all transactions on the transaction index page
-5. Use filters to view specific transaction types (Income/Expense)
+3. Add new transactions through the **"Create Transaction"** form
+4. View and manage all transactions on the **Transaction Index** page
+5. Use filters to view specific transaction types (**Income** / **Expense**)
 6. Edit or delete transactions as needed
+
 
 ## Database Structure
 
@@ -142,11 +154,7 @@ The project includes comprehensive test coverage:
 
 ![Transaction Controller Test](https://github.com/user-attachments/assets/16585d33-0832-4264-b365-21e283a89001)
 
-Run tests with:
 
-```bash
-php artisan test
-```
 
 ## Customization
 
