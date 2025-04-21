@@ -23,7 +23,7 @@ A Laravel-based personal finance tracking application that helps users manage th
 
 ## Requirements
 
--   Laravel Herd (recommended for Windows development)
+-   Laravel Herd
 -   PHP 8.1 or higher
 -   Composer
 -   Node.js & NPM
@@ -91,6 +91,23 @@ A Laravel-based personal finance tracking application that helps users manage th
     - Click on "Start Site" in the Herd interface
     - Click on "View Site" to open your project in the browser
 
+## Screenshots
+
+### Dashboard View
+
+![Dashboard Screenshot](path/to/dashboard-screenshot.png)
+_The main dashboard provides an overview of financial status with recent transactions_
+
+### Transaction List
+
+![Transaction List Screenshot](path/to/transaction-list-screenshot.png)
+_List of all transactions with filtering capability_
+
+### Add Transaction Form
+
+![Add Transaction Screenshot](path/to/add-transaction-screenshot.png)
+_Form for adding new income or expense transactions_
+
 ## Database Structure
 
 The application uses the following main tables:
@@ -136,7 +153,25 @@ php artisan test
 
 The application includes both feature and unit tests covering transaction functionality.
 
-### Customization
+### Test Results
+
+![Test Results Screenshot](path/to/test-results-screenshot.png)
+_All tests passing successfully_
+
+#### Feature Tests
+
+-   ✓ Transaction index page loads correctly
+-   ✓ User can create new transaction
+-   ✓ User can update existing transaction
+-   ✓ User can delete transaction
+-   ✓ User can filter transactions by type
+
+#### Unit Tests
+
+-   ✓ Transaction model returns correct attributes
+-   ✓ TransactionTypeEnum returns correct background color
+
+## Customization
 
 -   Transaction types are managed through the `TransactionTypeEnum` enum
 -   Styling uses Tailwind CSS classes with specific background colors for different transaction types
