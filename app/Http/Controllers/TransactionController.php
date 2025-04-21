@@ -22,7 +22,7 @@ class TransactionController extends Controller
         $transactions = Transaction::where('user_id', auth()->id())
                          ->when($type, function($query) use ($type) {
                             return $query->where('type', $type);
-                        })->get();
+                        })->paginate(15);
         
         return view('transaction.index',[
             'transactions' => $transactions,
